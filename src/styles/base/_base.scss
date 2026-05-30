@@ -1,51 +1,76 @@
-@use 'variables'; 
-* {
-  box-sizing: border-box;
+@use 'variables' as *;
+
+// ============================================================
+// THEME: Generate CSS custom properties for each theme
+// ============================================================
+body[data-theme="dark"] {
+  @include themify(dark);
+}
+
+body[data-theme="light"] {
+  @include themify(light);
+}
+
+// Default to dark theme if no data-theme attribute is set yet
+body:not([data-theme]) {
+  @include themify(dark);
+}
+
+// ============================================================
+// GLOBAL: Base styles that apply site-wide
+// ============================================================
+*, *::before, *::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Space Grotesk', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-  // --- THEME DEFINITION ---
-  // 1. Apply the default (dark) theme variables.
-  @include variables.themify('dark');
-  
-  // 2. Create the override rule for light mode.
-  &[data-theme='light'] {
-    @include variables.themify('light');
-  }
-  
-  // --- THEME APPLICATION ---
-  // 3. Apply the theme colors to the body.
   background-color: var(--color-background);
   color: var(--color-text-primary);
-  
+  font-family: 'Space Grotesk', sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-// --- The rest of your base styles ---
-body.custom-cursor-active,
-body.custom-cursor-active a,
-body.custom-cursor-active button {
-  cursor: none;
+a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--color-accent-hover);
+  }
 }
 
-main {
-  // You can now REMOVE your temporary background fix from here.
-  overflow-x: hidden;
+// ============================================================
+// SCHEDULER MODULE: Scoped layout styles
+// ============================================================
+.scheduler-app {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: 'Poppins', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
+// Assign components to the grid areas
+.scheduler-sidebar {
+  grid-area: sidebar;
 }
 
-section {
-  padding: 100px 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-  border-bottom: 1px solid var(--color-border);
+.scheduler-header {
+  grid-area: header;
+}
+
+.scheduler-main-content {
+  grid-area: main;
+  padding: 2rem;
+  overflow-y: auto; // Allow main content to scroll if it's long
 }

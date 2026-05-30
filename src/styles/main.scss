@@ -1,13 +1,11 @@
 @use 'base/base';
 @use 'base/variables';
 
-
 @use 'components/Header';
 @use 'components/Hero';
 @use 'components/About';
 @use 'components/Portfolio';
 @use 'components/Contact';
-@use 'components/Footer';
 @use 'components/CustomCursor';
 @use 'components/Interactive3DSection';
 @use 'components/TimeLapseSection';
@@ -15,3 +13,7 @@
 @use 'components/CodePlayground';
 @use 'components/CaseStudyPage';
 @use 'components/SocialCards';
+@use 'components/FluidFooter';
+@use 'components/AuthForm';
+@use 'components/UnityGame';
+@use 'components/ExternalGame'; 

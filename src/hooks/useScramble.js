@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+{ useState, useEffect, useRef } from 'react';
 
 const useScramble = (text, duration = 2000) => {
   const [scrambledText, setScrambledText] = useState('');

@@ -11,10 +11,15 @@
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.4",
+    "@supabase/supabase-js": "^2.86.0",
     "@uiw/codemirror-theme-okaidia": "^4.25.2",
     "@uiw/react-codemirror": "^4.25.2",
+    "date-fns": "^4.1.0",
     "git": "^0.1.5",
     "react": "^19.1.1",
+    "react-big-calendar": "^1.19.4",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3",
     "vite-plugin-svgr": "^4.5.0"
